@@ -7,7 +7,16 @@ import { compileMDX } from 'next-mdx-remote/rsc'
 export default async function Home() {
   try {
     const filePath = path.join(process.cwd(), 'docs', 'main.md')
+    console.log('Attempting to read file from:', filePath)
+    
+    // Check if file exists
+    if (!fs.existsSync(filePath)) {
+      console.error('File does not exist:', filePath)
+      throw new Error('Documentation file not found')
+    }
+
     const fileContent = fs.readFileSync(filePath, 'utf8')
+    console.log('File content:', fileContent)
     
     const { content } = await compileMDX({
       source: fileContent,
