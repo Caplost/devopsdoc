@@ -19,3 +19,14 @@ body {
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+pre {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  padding: 1rem;
+  background: #f5f5f5;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  overflow-x: auto;
+}

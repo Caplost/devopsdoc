@@ -1,5 +1,6 @@
 import fs from 'fs'
 import path from 'path'
+import ErrorMessage from '@/components/ErrorMessage'
 
 export default async function Home() {
   try {
@@ -7,17 +8,12 @@ export default async function Home() {
     const fileContent = fs.readFileSync(filePath, 'utf8')
     
     return (
-      <main>
+      <main className="min-h-screen">
         <pre>{fileContent}</pre>
       </main>
     )
   } catch (error) {
     console.error('File reading error:', error)
-    return (
-      <main>
-        <h1>Error Loading Content</h1>
-        <p>Unable to load the documentation content.</p>
-      </main>
-    )
+    return <ErrorMessage message="Unable to load the documentation content." />
   }
 }
